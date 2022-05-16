@@ -3,7 +3,13 @@ const express = require('express')
 
 const server = express()
 
-server.use('*', (req,res) => {
+server.get('/api/users', (req, res) => {
+    console.log('getting users')
+    res.json('users')
+})
+
+// catchAll
+server.use('*', (req, res) => {
     res.status(404).json({
         message:'not found'
     })
